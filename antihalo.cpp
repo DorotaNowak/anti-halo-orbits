@@ -137,20 +137,20 @@ int main(){
 	  }
 	  for(int i=1; i<n+1; i++){   
 		  res[n+i] = res[i];
-            res[n+i][2] = -res[n+i][2];
-            res[n+i][5] = -res[n+i][5];
+          res[n+i][2] = -res[n+i][2];
+          res[n+i][5] = -res[n+i][5];
 		  myfile << res[n+i][0] << "," << res[n+i][2] << "," << res[n+i][4] << ",\n";
 	  }
       myfile.close();
       
-	 MpFloat::setDefaultPrecision(100);
+	  MpFloat::setDefaultPrecision(100);
 
 	  HHMap _crvf(cr3bpVectorField,6,6,2);
 	  _crvf.setParameter(0,HHInterval(massSunJupiter));
 	  _crvf.setParameter(1,HHInterval(massSunJupiter)-1);
 	  HHSolver _solver(_crvf,40);
-       _solver.setAbsoluteTolerance(1e-18);
-       _solver.setRelativeTolerance(1e-18);
+      _solver.setAbsoluteTolerance(1e-18);
+      _solver.setRelativeTolerance(1e-18);
 	  HHSection _section(6,1);
 	  HHPoincareMap _pm(_solver,_section);
 	  
@@ -158,7 +158,7 @@ int main(){
 		  
 	  for(int i=1;i<=n; i++){
 		  cout << i << ", z = " << res[i][2] << endl;
-            DVector u = res[i];
+          DVector u = res[i];
 		  HHVector p({HHInterval(u[0]),HHInterval(u[1]),HHInterval(u[2]),HHInterval(u[3]),HHInterval(u[4]),HHInterval(u[5])});
             if(isSubset(p, delta_x, _pm)){
                cout << "OK" << endl;
